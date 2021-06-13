@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3" >
+      <%= render 'books/user', user: @user,newbook: @newbook %>
+    </div>
+    <div class="post-body col-lg-8 offset-md-1">
+
+      <table class="table table-striped">
+        <thead>
+          <tr></tr>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>opinion</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, size:"60x60", fallback: "no_image.jpg" %></td>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+            <td><%= link_to "編集", edit_book_path(@book) ,class: "btn btn-secondary"%></td>
+            <td><%= link_to "削除", book_path(@book.id), method: :delete,class: "btn btn-secondary", "data-confirm" => "本当に削除しますか？" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<%= render 'books/user', user: @user,newbook:@newbook %>
+<% @books.each do |book| %>
+<div>
+  
+        <table class="table table-striped">
+        <thead>
+          <tr></tr>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+  <p>投稿ユーザー画像：<%= attachment_image_tag book.user, :profile_image, size:"60x60", fallback: "no_image.jpg" %></p>
+  <p>title：<%= book.title %></p>
+  <p>opinion：<%= book.body %></p>
+  <p>name：<%= book.user.name %></p>
+</div>
+<% end %>
+
