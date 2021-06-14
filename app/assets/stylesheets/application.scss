@@ -30,3 +30,30 @@
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+
+}
+.fa-book:before {
+    content: "\f02d";
+}
+.fa, .fas {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+.awesome::before{
+  font-family: "Font Awesome 5 Free";
+  content: '\f02d';
+
+  font-weight: 900;
+  margin-right: 4px;
+  color:#212529;;
+}
+body{
+    font-family:"Font Awesome 5 Free","Font Awesome 5 Brands";
+}

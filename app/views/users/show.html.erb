@@ -1,8 +1,13 @@
-<%= render 'books/user', user: @user,newbook:@newbook %>
-<% @books.each do |book| %>
-<div>
-  
-        <table class="table table-striped">
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" >
+      <%= render 'books/user', user: @user,newbook:@newbook %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <h2>Books</h2>
+      <table class="table table-striped">
         <thead>
           <tr></tr>
           <tr>
@@ -12,18 +17,21 @@
           </tr>
         </thead>
         <tbody>
-
+        <% @books.each do |book| %>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= attachment_image_tag book.user, :profile_image, size:"60x60", fallback: "no_image.jpg" %></td>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
           </tr>
+        <% end %>
         </tbody>
       </table>
-  <p>投稿ユーザー画像：<%= attachment_image_tag book.user, :profile_image, size:"60x60", fallback: "no_image.jpg" %></p>
-  <p>title：<%= book.title %></p>
-  <p>opinion：<%= book.body %></p>
-  <p>name：<%= book.user.name %></p>
+    </div>
+  </div>
 </div>
-<% end %>
+
+
+
+
+
 

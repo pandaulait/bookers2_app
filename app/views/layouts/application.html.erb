@@ -4,14 +4,14 @@
     <title>Bookers2App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand p-1" href="/">
             <span>Bookers</span>
@@ -39,10 +39,10 @@
                 <%= link_to "Home", root_path %>
               </li>
               <li class="nav-item">
-                <%= link_to "About", root_path %>
+                <%= link_to "About", home_about_path %>
               </li>
-              <li class="nav-item">
-                <%= link_to "signup", new_user_registration_path %>
+               <li class="nav-item">
+                <%= link_to "sign up", new_user_registration_path %>
               </li>
               <li class="nav-item">
                 <%= link_to "login", new_user_session_path %>
@@ -53,7 +53,13 @@
         </div>
       </nav>
     </header>
-    
+
+
+      <%= render 'layouts/notifications' %>
+
+
+
+
 
 
     <%= yield %>

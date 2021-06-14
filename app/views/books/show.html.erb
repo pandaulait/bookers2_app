@@ -1,11 +1,16 @@
-
+<% if @newbook.errors.any? %>
+  <%= @newbook.errors.count %>件のエラーが発生しました
+  <% @newbook.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-3" >
+    <div class="col-md-3" >
       <%= render 'books/user', user: @user,newbook: @newbook %>
     </div>
-    <div class="post-body col-lg-8 offset-md-1">
-
+    <div class="post-body col-md-8 offset-md-1">
+      <h2>Book</h2>
       <table class="table table-striped">
         <thead>
           <tr></tr>
