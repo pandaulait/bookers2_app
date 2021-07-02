@@ -65,7 +65,7 @@
           <span class="m-3">
             <% if @book.user.id==current_user.id%>
               <% if @book.favorited_by?(current_user) %>
-                <%= link_to book_favorites_path(@book), method: :delete do %>
+                <%= link_to book_favorites_path(@book),class:"text-danger", method: :delete do %>
                   ♥<%= @book.favorites.count %>
                 <% end %>
               <% else %>
