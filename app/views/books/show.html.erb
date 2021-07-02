@@ -80,7 +80,7 @@
 
           <% @book.post_comments.each do |post_comment|%>
             <div class="m-1">
-              <%= attachment_image_tag @book.user, :profile_image, size:"60x60", fallback: "no_image.jpg" %>
+              <%= attachment_image_tag post_comment.user, :profile_image, size:"60x60", fallback: "no_image.jpg" %>
               <%= post_comment.comment %>
               <% if post_comment.user == current_user %>
                 <span class="comment-delete float-right">
