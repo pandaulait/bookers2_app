@@ -21,6 +21,7 @@
               <th>opinion</th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -31,9 +32,24 @@
                   <%= @book.user.name%>
                 <% end %>
               </td>
-              <td><%= @book.title %></td>
-              <td><%= @book.body %></td>
-              <td>
+              <td class="align-middle"><%= @book.title %></td>
+              <td class="align-middle"><%= @book.body %></td>
+              <td class="align-middle">
+                <span class="m-3">
+                  <% if @book.user.id==current_user.id%>
+                    <% if @book.favorited_by?(current_user) %>
+                      <%= link_to book_favorites_path(@book),class:"text-danger", method: :delete do %>
+                        ♥<%= @book.favorites.count %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to book_favorites_path(@book), method: :post do %>
+                        ♡<%= @book.favorites.count %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </span>
+              </td>
+              <td class="align-middle">
                 <% if @book.user.id==current_user.id%>
                   <%= link_to "Edit", edit_book_path(@book) ,class: "btn btn-secondary"%>
                 <%else%>
@@ -52,7 +68,7 @@
                   <% end %>
                 <%end%>
               </td>
-              <td>
+              <td class="align-middle">
                 <% if @book.user.id==current_user.id%>
                   <%= link_to "Destroy", book_path(@book.id), method: :delete,class: "btn btn-secondary", "data-confirm" => "本当に削除しますか？" %>
                 <%end%>
@@ -62,21 +78,7 @@
         </table>
         <div class="comments">
           <h3>comment</h3>
-          <p>コメント件数:<%=@book.post_comments.count%>
-          <span class="m-3">
-            <% if @book.user.id==current_user.id%>
-              <% if @book.favorited_by?(current_user) %>
-                <%= link_to book_favorites_path(@book),class:"text-danger", method: :delete do %>
-                  ♥<%= @book.favorites.count %>
-                <% end %>
-              <% else %>
-                <%= link_to book_favorites_path(@book), method: :post do %>
-                  ♡<%= @book.favorites.count %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </span>
-          </p>
+          <p>コメント件数:<%=@book.post_comments.count%></p>
 
           <% @book.post_comments.each do |post_comment|%>
             <div class="m-1">
