@@ -26,9 +26,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-
-  end
-  def edit
     @book = Book.find(params[:id])
     if @book.user == current_user
       render :edit
@@ -52,6 +49,14 @@ class BooksController < ApplicationController
       render :edit
     end
   end
+
+  # def search
+  #   @books =Book.search(params[:keyword])
+  #   @keyword = params[:keyword]
+  #   @user = current_user
+  #   @newbook = Book.new
+  #   render "index"
+  # end
 
   private
 

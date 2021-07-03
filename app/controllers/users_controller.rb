@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
       flash[:notice] = "successfully"
     else
-      render :edit
+      render edit
     end
   end
 

@@ -63,7 +63,15 @@
     </header>
 
 
-      <%= render 'layouts/notifications' %>
+    <%= render 'layouts/notifications' %>
+    <div class="container">
+      <span class="text-right">
+        <% if user_signed_in? %>
+          <%= render 'layouts/find' %>
+        <%end%>
+      </span>
+    </div>
+
 
 
 
