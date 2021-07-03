@@ -60,10 +60,6 @@
           </div>
         </div>
       </nav>
-    </header>
-
-
-    <%= render 'layouts/notifications' %>
     <div class="container">
       <span class="text-right">
         <% if user_signed_in? %>
@@ -71,6 +67,11 @@
         <%end%>
       </span>
     </div>
+    </header>
+
+
+    <%= render 'layouts/notifications' %>
+
 
 
 
