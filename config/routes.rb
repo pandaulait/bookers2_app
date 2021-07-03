@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'users/show'
   get 'users/index'
   devise_for :users
@@ -16,5 +17,5 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
   # get 'search' => 'books#search'
-  get 'finder' => 'finders#finder'
+  get 'search' => 'searches#search'
 end

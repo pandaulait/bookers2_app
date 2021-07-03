@@ -1,5 +1,5 @@
         <!--検索機能はここですか？-->
-    <%= form_with url: finder_path, method: :get, local: :true do |f| %>
+    <%= form_with url: search_path, method: :get, local: :true do |f| %>
       <%= f.select :range, options_for_select([['User'], ['Book']]) %>
       <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
       <%= f.text_field :word %>
