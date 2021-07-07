@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to:'home#top'
   get 'home/about'
+  get 'books/category/:id'=>'books#category',as: 'book_category'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :books, only: [:edit, :create, :index, :show, :destroy,:update,:destroy] do
     resource :favorites, only: [:create, :destroy]

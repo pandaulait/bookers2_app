@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_053715) do
+ActiveRecord::Schema.define(version: 2021_07_07_074253) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_053715) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.float "evaluation"
+    t.string "category"
   end
 
   create_table "favorites", force: :cascade do |t|

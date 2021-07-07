@@ -20,7 +20,7 @@
               <th></th>
               <th>Title</th>
               <th>opinion</th>
-              <th></th>
+              <th>category</th>
               <th></th>
               <th></th>
               <th></th>
@@ -39,6 +39,11 @@
               </td>
               <td class="align-middle"><%= @book.title %></td>
               <td class="align-middle"><%= @book.body %></td>
+              <td class="align-middle">
+                <% if @book.category != nil %>
+                  <%= link_to @book.category, book_category_path(@book.id) %>
+                <%end%>
+              </td>
               <!--いいね機能-->
               <td class="align-middle favorite-btn-<%=@book.id%>">
                 <%= render 'favorites/favorite-btn', book: @book %>

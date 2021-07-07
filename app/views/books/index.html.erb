@@ -31,6 +31,8 @@
               <th></th>
               <th>Title</th>
               <th>opinion</th>
+              <th>category</th>
+              <th></th>
               <th></th>
               <th></th>
             </tr>
@@ -45,6 +47,11 @@
               </td>
               <td class="align-middle"><%=link_to book.title,book_path(book.id) %></td>
               <td class="align-middle"><%= book.body %></td>
+              <td class="align-middle">
+                <% if book.category != nil %>
+                  <%= link_to book.category, book_category_path(book.id) %>
+                <%end%>
+              </td>
               <td class="align-middle favorite-btn-<%=book.id%>">
                 <span class="text-center">
                   <!--いいね機能-->

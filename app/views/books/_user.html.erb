@@ -50,7 +50,8 @@
   <%= f.text_field :title ,id:"inputTitle",placeholder:"Title",class: "form-control"%><br>
   <label for "inputOpinion">opinion</label><br>
   <%= f.text_area :body ,id:"inputOpinion",placeholder:"Opinion",class: "form-control"%><br>
-
+  <label for ="inputCategory">Category</label><br>
+  <%= f.text_field :category ,id:"inputCategory",placeholder:"Category",class: "form-control"%><br>
   <!--ここから星評価機能-->
   <div class="field m-2" id="star">
     <%= f.label :evaluation, "星評価：" %></br>
@@ -69,6 +70,7 @@
     </script>
   </div>
   <!--ここまで-->
+
   <%= f.submit 'Create Book' ,class: "btn btn-secondary"%>
 <% end %>
 

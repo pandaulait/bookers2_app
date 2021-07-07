@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     elsif params[:sort_update] == "B"
       @books = Book.order(evaluation: :DESC)
     else
-      @books = Book.all
+      @books = Book.order(id: :DESC)
     end
     @user = current_user
   end
@@ -53,6 +53,14 @@ class BooksController < ApplicationController
     else
       render :edit
     end
+
+  end
+    def category
+    @book =Book.find(params[:id])
+    @books = Book.where(category: @book.category)
+    @newbook = Book.new
+    @user = current_user
+    render 'books/index'
   end
 
   # def search
@@ -66,7 +74,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title,:body,:evaluation)
+    params.require(:book).permit(:title,:body,:evaluation,:category)
   end
 
 end

@@ -38,6 +38,14 @@
                 <i class="fas fa-sign-out-alt"></i>
                 <%= link_to "logout", destroy_user_session_path, method: :delete,class:"text-light" %>
               </li class="nav-item nav-link">
+              <li class="nav-item nav-link">
+                <div>
+                  <%= form_with url: search_path, method: :get, local: :true do |f| %>
+                    <%= f.text_field :word %>
+                    <%= f.submit "検索" %>
+                  <% end %>
+                </div>
+              </li>
               <% else %>
               <li class="nav-item nav-link">
                 <i class="fas fa-home"></i>

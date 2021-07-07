@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
+  validates :category, presence: true
   validates :evaluation, presence: true
   validates :body, presence: true,length: { maximum: 200 }
   has_many :favorites, dependent: :destroy
@@ -15,13 +16,13 @@ class Book < ApplicationRecord
   # end
   def self.looks(searches, words)
     if searches == "perfect_match"
-      @book = Book.where("title LIKE? OR body LIKE?", "#{words}", "#{words}")
+      @book = Book.where("title LIKE? OR body LIKE? OR category LIKE?", "#{words}", "#{words}", "#{words}")
     elsif searches == "forward_match"
-      @book = Book.where("title LIKE? OR body LIKE?", "#{words}%", "#{words}%")
+      @book = Book.where("title LIKE? OR body LIKE? OR category LIKE?", "#{words}%", "#{words}%", "#{words}%")
     elsif searches == "backward_match"
-      @book = Book.where("title LIKE? OR body LIKE?", "%#{words}", "%#{words}")
+      @book = Book.where("title LIKE? OR body LIKE? OR category LIKE?", "%#{words}", "%#{words}", "%#{words}")
     else
-      @book = Book.where("title LIKE? OR body LIKE?", "%#{words}%", "%#{words}%")
+      @book = Book.where("title LIKE? OR body LIKE? OR category LIKE?", "%#{words}%", "%#{words}%", "%#{words}%")
     end
   end
 end
