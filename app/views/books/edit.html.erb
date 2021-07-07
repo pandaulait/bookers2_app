@@ -3,7 +3,7 @@
   <div class="container">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <% if @book.errors.any? %>
-        <div id="error_explanation">
+        <div class="bg-danger",id="error_explanation">
           <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
           <ul>
             <% @book.errors.full_messages.each do |message| %>
@@ -22,6 +22,10 @@
         <h4>opinion</h4>
         <div class="form-group">
           <%= f.text_field :body,class: "form-control" %>
+        </div>
+        <h4>category</h4>
+        <div class="form-group">
+          <%= f.text_field :category ,class: "form-control" %>
         </div>
         <div class="relative-post-evaluation my-1">
           <div id="star-rate<%= @book.id%>"></div>
