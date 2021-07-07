@@ -43,11 +43,32 @@
               <td class="align-middle"><%=link_to book.title,book_path(book.id) %></td>
               <td class="align-middle"><%= book.body %></td>
               <td class="align-middle favorite-btn-<%=book.id%>">
-                <!--いいね機能-->
-               <%= render 'favorites/favorite-btn', book: book %>
+                <span class="text-center">
+                  <!--いいね機能-->
+                  <%= render 'favorites/favorite-btn', book: book %>
+                </span>
               </td>
               <td class="align-middle">
                 <p>コメント数:<%=book.post_comments.count%></p>
+              </td>
+               <!--五段階評価-->
+              <td class="align-middle td-s">
+
+                <div class="relative-post-evaluation">
+                <div id="star-rate<%= book.id%>"></div>
+                  <script>
+                  $('#star-rate-<%= book.id %>').empty();
+                    $('#star-rate<%= book.id%>').raty({
+                      size      : 36,
+                      starOff   : '<%= asset_path('star-off.png') %>',
+                      starOn    : '<%= asset_path('star-on.png') %>',
+                      starHalf: "<%= asset_path('star-half.png') %>",
+                      half      : true,
+                      readOnly: true,
+                      score: <%= book.evaluation %>,
+                    });
+                  </script>
+              </div>
               </td>
             </tr>
           <% end %>
