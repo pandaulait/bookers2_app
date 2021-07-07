@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
   def index
     @newbook = Book.new
-    @books = Book.all
+    if params[:sort_update] == "A"
+      @books = Book.order(id: :DESC)
+    elsif params[:sort_update] == "B"
+      @books = Book.order(evaluation: :DESC)
+    else
+      @books = Book.all
+    end
     @user = current_user
   end
 

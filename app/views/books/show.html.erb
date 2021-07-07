@@ -1,11 +1,12 @@
 <main>
-  <% if @newbook.errors.any? %>
-    <%= @newbook.errors.count %>件のエラーが発生しました
-    <% @newbook.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
-  <% end %>
+
   <div class="container">
+    <% if @newbook.errors.any? %>
+      <%= @newbook.errors.count %>件のエラーが発生しました
+      <% @newbook.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
     <div class="row">
       <div class="col-md-3" >
         <%= render 'books/user', user: @book.user,newbook: @newbook %>
