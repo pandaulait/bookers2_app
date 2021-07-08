@@ -23,6 +23,10 @@ class User < ApplicationRecord
   has_many :relationships ,class_name: "Relationship" ,foreign_key:  "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   # @user.followingsで、@userがfollower_idである時のfollowed_idを全て取得
+  # DM機能
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -34,6 +38,11 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  def self.followed_by?(user)
+    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    followers.include?(user)
+  end
+
   def self.looks(searches,words)
     if searches == "perfect_match"
       @user = User.where("name LIKE ?","#{words}")
