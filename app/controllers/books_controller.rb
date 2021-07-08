@@ -5,6 +5,8 @@ class BooksController < ApplicationController
       @books = Book.order(id: :DESC)
     elsif params[:sort_update] == "B"
       @books = Book.order(evaluation: :DESC)
+    elsif params[:sort_update] == "C"
+      @books = Book.where(created_at: 1.weeks.ago..Time.now).includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     else
       @books = Book.order(id: :DESC)
     end

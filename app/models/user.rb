@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
+  # has_many :likes, dependent: :destroy
+  has_many :favorited_books, through: :favorites, source: :user
   # 以下フォロー機能
 
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
