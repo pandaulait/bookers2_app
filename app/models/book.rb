@@ -6,7 +6,7 @@ class Book < ApplicationRecord
   validates :body, presence: true,length: { maximum: 200 }
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  
+  is_impressionable counter_cache: true
   # has_many :likes, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :book
 

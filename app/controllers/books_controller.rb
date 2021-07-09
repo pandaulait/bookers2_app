@@ -7,9 +7,11 @@ class BooksController < ApplicationController
       @books = Book.order(evaluation: :DESC)
     elsif params[:sort_update] == "C"
       @books = Book.where(created_at: 1.weeks.ago..Time.now).includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    elsif params[:sort_update] == "D"
+      @books = Book.order(impressions_count: :DESC)
     else
       @books = Book.order(id: :DESC)
-    endM
+    end
     @user = current_user
   end
 
@@ -31,6 +33,7 @@ class BooksController < ApplicationController
     @user = current_user
     @newbook = Book.new
     @post_comment = PostComment.new
+    impressionist(@book, nil, unique: [:ip_address]) # 追記
   end
 
   def edit
@@ -57,7 +60,7 @@ class BooksController < ApplicationController
     end
 
   end
-    def category
+  def category
     @book =Book.find(params[:id])
     @books = Book.where(category: @book.category)
     @newbook = Book.new

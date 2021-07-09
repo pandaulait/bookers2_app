@@ -23,6 +23,7 @@
           <%= link_to '新しい順', books_path(sort_update: "A") %>|
           <%= link_to '評価の高い順', books_path(sort_update: "B") %>|
           <%= link_to 'いいね順', books_path(sort_update: "C") %>
+          <%= link_to '閲覧数順', books_path(sort_update: "D") %>
         </span>
 
         <table class="table table-striped">
@@ -60,7 +61,8 @@
                 </span>
               </td>
               <td class="align-middle">
-                コメント数:<%=book.post_comments.count%>
+                コメント数:<%=book.post_comments.count%></br>
+                閲覧数:<%= book.impressions_count %>
               </td>
                <!--五段階評価-->
               <td class="align-middle td-s">
