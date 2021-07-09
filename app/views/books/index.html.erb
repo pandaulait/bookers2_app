@@ -22,7 +22,7 @@
         <span>
           <%= link_to '新しい順', books_path(sort_update: "A") %>|
           <%= link_to '評価の高い順', books_path(sort_update: "B") %>|
-          <%= link_to 'いいね順', books_path(sort_update: "C") %>
+          <%= link_to 'いいね順', books_path(sort_update: "C") %>|
           <%= link_to '閲覧数順', books_path(sort_update: "D") %>
         </span>
 
@@ -85,13 +85,13 @@
               </td>
             </tr>
           <% end %>
-
           </tbody>
         </table>
+
+
       </div>
     </div>
   </div>
-
 </main>
 
 

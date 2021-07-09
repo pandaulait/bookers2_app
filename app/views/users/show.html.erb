@@ -40,6 +40,54 @@
           <% end %>
           </tbody>
         </table>
+                <table class="table table-striped">
+          <thead>
+            <th>今日の投稿数</th>
+            <th>前日の投稿数</th>
+            <th>前日比</th>
+          </thead>
+          <tbody>
+            <td>
+              <% a=current_user.books.where(created_at: Time.zone.now.all_day).count%>
+              <%=a%>
+            </td>
+            <td>
+              <% b=current_user.books.where(created_at: 1.day.ago.all_day).count%>
+              <%=b%>
+            </td>
+            <td>
+              <%if a !=0%>
+                <%= ((b.to_f/a.to_f)*100).round%>%
+              <%else%>
+                測定不能
+              <%end%>
+            </td>
+          </tbody>
+        </table>
+        <table class="table table-striped">
+          <thead>
+            <th>今週の投稿数</th>
+            <th>先週の投稿数</th>
+            <th>前日比</th>
+          </thead>
+          <tbody>
+            <td>
+              <% a=current_user.books.where(created_at: 1.weeks.ago..Time.now).count%>
+              <%=a%>
+            </td>
+            <td>
+              <% b=current_user.books.where(created_at: 1.week.ago.all_week).count%>
+              <%=b%>
+            </td>
+            <td>
+              <%if a !=0%>
+                <%= ((b.to_f/a.to_f)*100).round%>%
+              <%else%>
+                測定不能
+              <%end%>
+            </td>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
