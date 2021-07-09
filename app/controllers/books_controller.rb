@@ -60,6 +60,8 @@ class BooksController < ApplicationController
     end
 
   end
+
+
   def category
     @book =Book.find(params[:id])
     @books = Book.where(category: @book.category)

@@ -1,5 +1,7 @@
 {
   "name": "Bookers2_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^2.9.4"
+  }
 }

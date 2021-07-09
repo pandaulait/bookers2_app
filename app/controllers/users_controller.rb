@@ -3,6 +3,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @newbook = Book.new
+    # グラフ機能
+    @book_by_day =@books.where(created_at: 1.weeks.ago..Time.now).group_by_day(:created_at).size
+    @chartlabels = @book_by_day.map(&:first).to_json.html_safe
+    @chartdatas = @book_by_day.map(&:second)
+
+
+
     # 開いているshowのuserとログインしているuserのentry(相互フォロー関係)を全て変数に格納
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

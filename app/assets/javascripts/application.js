@@ -19,6 +19,9 @@
 //= require turbolinks
 //= require_tree .
 
+//= require chartkick
+//= require Chart.bundle
+
 /*!
  * Raty - A Star Rating Plugin
  *
