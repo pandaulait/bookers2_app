@@ -1,6 +1,17 @@
 <div>
-  <%= form_with url: user_show_search_path, method: :get, local: :true do |f| %>
+  <%= form_with url: user_show_search_path(@user.id), method: :get,  remote: true do |f| %>
     <%= f.date_field :date %>
     <%= f.submit "検索" %>
   <% end %>
+  <% if @bookcount !=nil%>
+    <h3>検索結果</h3>
+    <table>
+      <thead>
+        <th>投稿数</th>
+      </thead>
+      <tbody>
+        <td><%= @bookcount.count %></td>
+      </tbody>
+    </table>
+  <%end%>
 </div>

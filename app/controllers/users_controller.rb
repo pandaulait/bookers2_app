@@ -7,9 +7,6 @@ class UsersController < ApplicationController
     @book_by_day =@books.where(created_at: 1.weeks.ago..Time.now).group_by_day(:created_at).size
     @chartlabels = @book_by_day.map(&:first).to_json.html_safe
     @chartdatas = @book_by_day.map(&:second)
-
-
-
     # 開いているshowのuserとログインしているuserのentry(相互フォロー関係)を全て変数に格納
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
@@ -32,7 +29,12 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  def search
+    @user =User.find(params[:id])
+    @books = @user.books
+    @date = params[:date].to_date
+    @bookcount =@books.where(created_at: @date.all_day)
+  end
   def index
     @users = User.all
     @user = current_user
@@ -63,21 +65,22 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :profile_image,:introduction)
   end
-  
-  def search
-    @range = params[:range]
-    if @range == "User"
-      @users = User.looks(params[:search], params[:word])
-    elsif @range == "Book"
-      @books = Book.looks(params[:search], params[:word])
-    else
-      @users = User.looks(params[:search], params[:word])
-      @books = Book.looks(params[:search], params[:word])
-    end
-  end
+
+
+  # def search
+  #   @range = params[:range]
+  #   if @range == "User"
+  #     @users = User.looks(params[:search], params[:word])
+  #   elsif @range == "Book"
+  #     @books = Book.looks(params[:search], params[:word])
+  #   else
+  #     @users = User.looks(params[:search], params[:word])
+  #     @books = Book.looks(params[:search], params[:word])
+  #   end
+  # end
 end
 

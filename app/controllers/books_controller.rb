@@ -69,6 +69,7 @@ class BooksController < ApplicationController
     @user = current_user
     render 'books/index'
   end
+  
 
   # def search
   #   @books =Book.search(params[:keyword])
