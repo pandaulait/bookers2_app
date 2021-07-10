@@ -1,0 +1,6 @@
+<div>
+  <%= form_with url: user_show_search_path, method: :get, local: :true do |f| %>
+    <%= f.date_field :date %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>

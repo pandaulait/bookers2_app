@@ -63,9 +63,21 @@ class UsersController < ApplicationController
   end
 
   private
-
+  
   def user_params
     params.require(:user).permit(:name, :profile_image,:introduction)
+  end
+  
+  def search
+    @range = params[:range]
+    if @range == "User"
+      @users = User.looks(params[:search], params[:word])
+    elsif @range == "Book"
+      @books = Book.looks(params[:search], params[:word])
+    else
+      @users = User.looks(params[:search], params[:word])
+      @books = Book.looks(params[:search], params[:word])
+    end
   end
 end
 

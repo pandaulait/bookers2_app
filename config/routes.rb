@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  # get 'search' => 'books#search'
+  get 'search' => 'users#search',as: 'user_show_search'
   get 'search' => 'searches#search'
 end
